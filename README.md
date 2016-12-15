@@ -2,5 +2,5 @@
 
 # Papers
 
-(PDF collection)[https://paperpile.com/shared/ImHHXr]
+[PDF collection](https://paperpile.com/shared/ImHHXr)
 
