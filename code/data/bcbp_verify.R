@@ -36,15 +36,17 @@ show.map <- function(field) {
     cat(sprintf("Number of BCBPs\t%d\n", bp.n))
 
     if (check.drp) {
-      op <- par(mfrow=c(2,1))
+      op <- par(mfrow=c(3,1))
       cones <- dat[which(dat[,3]==1),1:2]
       bp <-    dat[which(dat[,3]==2),1:2]
 
       nbins <- 10; r <- 10
       drp.c <- autodrp(cones[,1], cones[,2], nbins, r, bb)
       drp.b <- autodrp(bp[,1],       bp[,2], nbins, r, bb)
+      drp.x <- crossdrp(cones[,1], cones[,2], bp[,1], bp[,2], nbins, r, bb)
       plot(drp.c)
       plot(drp.b)
+      plot(drp.x)
       par(op)
     }
     cat(sprintf("  BC effrad: %.1f um\n", drp.c$effrad))
@@ -55,9 +57,11 @@ show.map <- function(field) {
 
 }
 
+pdf(file="bcbp_verify.pdf", width=8, height=11)
 show.map(1)
 show.map(2)
 show.map(3)
 show.map(4)
 show.map(5)
 show.map(6)
+dev.off()
