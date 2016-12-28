@@ -6,7 +6,9 @@
 
 ## SJE: Set root directory for where data files are.
 date()
-AVLROOT <- Sys.getenv("AVLROOT")
+##AVLROOT <- Sys.getenv("AVLROOT")
+AVLROOT <- "."
+
 
 #### Importing command line arguments ###
 #### The format for command line arguments is: 'fieldnumber' 'mean BC exclusion zone' 'st BC exclusion zone'
