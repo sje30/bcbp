@@ -1,4 +1,5 @@
 ## Verify the BCBP data files.
+## Run this script to check that you can compute the DRPs.
 
 check.drp <- TRUE                       #Compute Density Recovery Profile?
 if (check.drp) {
@@ -7,7 +8,7 @@ if (check.drp) {
 
 
 
-data.dir <- "~/mosaics/data/bcbp2"      #Where files are stored.
+data.dir <- "."      #Where files are stored.
 
 
 show.map <- function(field) {
