@@ -13,8 +13,9 @@ function overlay() {
 	# NOTE: latter part of file name can vary depending on parameters
 	# passed to original program
 	name_start="pvalues_"$1"_"$i
-	# get only the first result from ls in case there's more than one
-	files[i]=$(ls $name_start* | head -1)
+	# get only the first result from ls (in time order so latest modified
+	# is used) in case there's more than one
+	files[i]=$(ls -t $name_start* | head -1)
     done
     # call overlay.pvals for the parameter specified
     R CMD BATCH "--args ${files[*]} $1" overlay_pvals.r
