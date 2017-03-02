@@ -18,8 +18,8 @@ param <- commandlineargs[nfields+1]
 # set x labels for different parameters
 labels <- list(depth="Max depth of mobile BCBPs", rel_force_mean="Mean relative force")
 
-# open postscript file
-postscript(file=paste("pvals_", param, "_combined_fields.ps", sep=""))
+# open pdf file
+pdf(file=paste("pvals_", param, "_combined_fields.ps", sep=""))
 
 colours <- rainbow(6)
 
