@@ -19,7 +19,7 @@ param <- commandlineargs[nfields+1]
 labels <- list(depth="Max depth of mobile BCBPs", rel_force_mean="Mean relative force")
 
 # open pdf file
-pdf(file=paste("pvals_", param, "_combined_fields.ps", sep=""))
+pdf(file=paste("pvals_", param, "_combined_fields.pdf", sep=""))
 
 colours <- rainbow(6)
 
