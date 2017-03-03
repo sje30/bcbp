@@ -597,7 +597,7 @@ analysis <- function(commandlineargs, AVLROOT) {
 	#############
 	sink(paste("pvalues_", sens.param, "_",x,"_",low,"_",high,"_",incr,"_",loopsize,"_",ulimit,"_",dexcBC,"_",dexcBC.sd,"_",dexcBC.trunc,"_",dexcBCBP,"_",dexcBCBP.sd,"_",dexcBCBP.trunc,".txt",sep=""))
 
-	print(paste("p values for", sens.param))
+	#print(paste("p values for", sens.param))
 	print(pvalues)
 
 	sink()
