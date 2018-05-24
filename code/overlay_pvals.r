@@ -6,9 +6,12 @@ commandlineargs <- commandArgs(TRUE)
 nfields <- 5
 filenames <- vector(length=nfields)
 
+# legend for use in plot
+legends <- vector(length=n)
 # first nfields command line arguments are file names
 for(i in 1:nfields) {
     filenames[i] <- commandlineargs[i]
+    legends[i] <- paste("field ", i, sep="") # set nth legend to field number
 }
 # then the next is the parameter that was being varied
 param <- commandlineargs[nfields+1]
@@ -21,7 +24,7 @@ labels <- list(depth="Max depth of mobile BCBPs", rel_force_mean="Mean relative 
 # open pdf file
 pdf(file=paste("pvals_", param, "_combined_fields.pdf", sep=""))
 
-colours <- rainbow(6)
+colours_init <- rainbow(n)
 
 # get maximum and minimum x-values and y-values for plotting
 n <- length(filenames)
@@ -62,20 +65,22 @@ for(j in 1:n) {
 first <- TRUE
 for(k in 1:n) {
     table <- tables[[k]]
-    x <- row.names(table)  # range of values iof 'param' for this field
+    x <- row.names(table)  # range of values of 'param' for this field
     y <- table$pBCBCBP  # range of p values for this field
     if(!first) {
         par(new=TRUE)  # plot on same graph
-        plot(x, y, type="l", lty=k%%6, lwd=3, col=colours[k%%6],
+        plot(x, y, type="l", lty=k%%6, lwd=3, col=colours[k],
              xlab=labels[[param]], ylab="Cross p value",
              xlim=c(minx, maxx), ylim=c(miny, maxy))
     } else {
-        plot(x, y, type="l", lty=k%%6, lwd=3, col=colours[k%%6],
+        plot(x, y, type="l", lty=k%%6, lwd=3, col=colours[k],
              xlab=NULL, ylab=NULL, # stop r superimposing 'x' and 'y' on labels
              xlim=c(minx, maxx), ylim=c(miny, maxy),
              main=paste("Sensitivity to ", param, ", all fields", sep=""))
         first <- FALSE
     }
 }
+
+legend(x="topright", legend=legends, col=colours, lty=1:n)
 
 dev.off()

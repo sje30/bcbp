@@ -2,7 +2,9 @@
 
 # set which parameters to look at
 declare -a params
-params=("depth" "rel_force_mean")
+
+#params=("depth" "rel_force_mean")
+params=("rel_force_mean")
 
 function overlay() {
     # runs overlay_pvals.r on pvalue files the parameter specified
